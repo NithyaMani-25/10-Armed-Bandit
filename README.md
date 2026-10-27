@@ -52,7 +52,7 @@ The experiment follows these steps:
 
 The action-value estimate can be updated using the sample-average method:
 
-Q(a) = Q(a) + [R - Q(a)] / N(a)
+Q(a+1) = Q(a) +1/N(a) [R - Q(a)] 
 
 Where:
 
@@ -96,33 +96,10 @@ The agent should gradually improve its action-value estimates through repeated i
 
 The actual results depend on the reward distributions, exploration rate, number of steps, and experimental settings.
 
-## 10. Applications
 
-The multi-armed bandit problem has applications in:
-
-- Online advertising.
-- Recommendation systems.
-- Clinical trial allocation.
-- A/B testing.
-- Resource allocation.
-- Adaptive decision-making.
-
-## 11. How to Run the Project
-
-1. Open the notebook in Google Colab.
-2. Run the Python cells in sequence.
-3. Observe the reward values and action selections.
-4. Generate and analyze the graphs.
-5. Compare the performance of different parameter settings, if implemented.
-
-## 12. Conclusion
+## 10. Conclusion
 
 The 10-Armed Bandit problem demonstrates how an agent can learn to make better decisions under uncertainty. It provides a simple foundation for understanding the exploration-exploitation trade-off in Reinforcement Learning.
 
-## 13. Author
 
-Add your name here.
 
-## 14. License
-
-This project is intended for educational and research purposes. Add a suitable open-source license if you wish to distribute the code for reuse.
