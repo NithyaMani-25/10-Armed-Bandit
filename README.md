@@ -263,39 +263,6 @@ The sample-average method retains the influence of older rewards. The constant s
 
 ## Comparison of Sample-Average and Constant Step-Size Methods
 
-In a 10-armed bandit problem, the agent estimates the expected reward of each arm and selects actions using a strategy such as epsilon-greedy.
-
-In a **nonstationary environment**, the true reward values change over time. The two methods differ in how they update their estimated rewards.
-
-### 1. Sample-Average Method
-
-The sample-average method calculates the average of all rewards received from an arm.
-
-**Formula:**
-
-$$
-Q_{n+1}(a)=Q_n(a)+\frac{1}{n}[R-Q_n(a)]
-$$
-
-- The step size decreases as the number of selections increases.
-- All past rewards continue to influence the estimate.
-- It can adapt slowly when the true reward values change.
-
-### 2. Constant Step-Size Method
-
-The constant step-size method uses a fixed learning rate, alpha, to update the estimated reward.
-
-**Formula:**
-
-$$
-Q_{n+1}(a)=Q_n(a)+\alpha[R-Q_n(a)]
-$$
-
-- The learning rate remains constant.
-- Recent rewards have more continuing influence on the estimate.
-- It can adapt more quickly to changes in a nonstationary environment.
-
-
 ## Example: Constant Step-Size Gives a Higher Estimated Reward
 
 Assume the previous estimated reward is 2 and the latest reward received is 8.
