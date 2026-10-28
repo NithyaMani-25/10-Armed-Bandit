@@ -256,24 +256,8 @@ In a nonstationary environment, the true reward values of the arms change over t
 
 The sample-average method retains the influence of older rewards. The constant step-size method gives more continuing influence to recent rewards and can adapt more quickly to changes.
 
-## 7. Reward Generation
 
-The reward is generated using:
-
-$$R_t=q_t^*(A_t)+\eta_t$$
-
-Where:
-- \(R_t\) is the reward at time step \(t\).
-- \(q_t^*(A_t)\) is the true value of the selected arm.
-- \(\eta_t\) is random noise.
-
-The true arm values change over time using:
-
-```python
-q_true += rng.normal(0.0, 0.01, size=NUM_ARMS)
-```
-
-## 8. Performance Evaluation
+## 7. Performance Evaluation
 
 The program evaluates the methods using two measures.
 
@@ -289,45 +273,15 @@ $$\text{Optimal Action Percentage}=\frac{\text{Number of optimal selections}}{\t
 
 This measures how frequently the agent selects an arm with the highest current true reward value.
 
-## 9. Graphs
+## 8. Graphs
 
 The Python program generates two graphs:
 
 1. **Average Reward Graph:** Compares the average rewards of the sample-average and constant step-size methods.
 2. **Optimal Action Percentage Graph:** Compares how frequently each method selects the currently optimal arm.
 
-## 10. Technologies Used
 
-- Python
-- NumPy
-- Matplotlib
-- Google Colab / Jupyter Notebook
-
-## 11. How to Run
-
-### Using Google Colab
-
-1. Open [Google Colab](https://colab.research.google.com/).
-2. Create a new notebook.
-3. Copy the Python program into a code cell.
-4. Run the code.
-5. View the generated graphs.
-
-### Running Locally
-
-Install the required libraries:
-
-```bash
-pip install numpy matplotlib
-```
-
-Save the Python program as `nonstationary_bandit.py` and execute:
-
-```bash
-python nonstationary_bandit.py
-```
-
-## 12. Conclusion
+## 9. Conclusion
 
 This project demonstrates how reinforcement learning can solve a decision-making problem in a changing environment. It compares the sample-average and constant step-size methods using epsilon-greedy action selection.
 
