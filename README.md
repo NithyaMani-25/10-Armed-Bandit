@@ -98,6 +98,9 @@ Q(3) = (2 + 1 + 5) / 3
 ## 4. Estimated Reward Update Formula
 
 The agent updates its estimated reward whenever it selects an arm and receives a new reward.
+$$
+Q_{\text{new}}(a) = Q_{\text{old}}(a) + \frac{1}{N(a)}\left[R-Q_{\text{old}}(a)\right]
+$$
 
 **Formula:**
 
