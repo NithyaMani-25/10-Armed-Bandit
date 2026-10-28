@@ -153,7 +153,6 @@ The estimate increases because the new reward is greater than the previous estim
 6. Compare the rewards and observe how the agent learns over time.
 
 ## 6. Important Formulas Summary
-
 | **Formula** | **Purpose** |
 |---|---|
 | $Q(a)=\frac{\text{Total reward}}{\text{Number of selections}}$ | Calculates the average estimated reward |
