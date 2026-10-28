@@ -179,7 +179,7 @@ The 10-Armed Bandit problem demonstrates how Reinforcement Learning agents learn
 
 # Nonstationary 10-Armed Bandit in Reinforcement Learning
 
-## 1. Project Overview
+## 1. Overview
 
 This project implements a Nonstationary 10-Armed Bandit problem using Python. It compares two reward estimation methods:
 
@@ -219,12 +219,12 @@ For ε = 0.1, the agent explores 10% of the time and exploits 90% of the time.
 
 The sample-average method estimates an arm's reward by averaging the rewards received from that arm.
 
-$$Q_{n+1}(a)=Q_n(a)+\frac{1}{n+1}[R-Q_n(a)]$$
+$$Q_{n+1}(a)=Q_n(a)+\frac{1}{n}[R-Q_n(a)]$$
 
 Where:
 - \(Q_n(a)\) is the previous estimated reward.
 - \(R\) is the latest reward.
-- \(n+1\) is the number of times the arm has been selected after the latest selection.
+- \(n\) is the number of times the arm has been selected after the latest selection.
 
 **Example:**
 
