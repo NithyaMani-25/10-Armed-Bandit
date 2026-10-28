@@ -286,7 +286,7 @@ The sample-average method calculates the average of all rewards received from an
 **Formula:**
 
 $$
-Q_{n+1}(a)=Q_n(a)+\frac{1}{n+1}[R-Q_n(a)]
+Q_{n+1}(a)=Q_n(a)+\frac{1}{n}[R-Q_n(a)]
 $$
 
 - The step size decreases as the number of selections increases.
