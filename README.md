@@ -48,7 +48,6 @@ Therefore, the agent explores 10% of the time and exploits 90% of the time, on a
 
 ## 3. Action-Value Function (Expected Reward)
 
-## 1. Action-Value Function (Expected Reward)
 
 The true value of an action (choosing arm \(a\)) is the expected reward when action \(a\) is selected.
 
@@ -56,23 +55,6 @@ $$
 q_*(a) = \mathbb{E}[R_t \mid A_t = a]
 $$
 
-### Explanation of Symbols
-
-- \(A_t\): The action selected at time step \(t\).
-- \(R_t\): The reward received at time step \(t\).
-- \(q_*(a)\): The true, unknown value of action \(a\).
-- \(\mathbb{E}\): The expected value (average reward over many selections).
-- \(a\): The selected arm in the 10-armed bandit problem.
-
-### Meaning
-
-The action-value function tells us the **average reward we expect to receive when we select a particular arm**.
-
-For example, if arm 3 gives an average reward of 2.5 over many selections, its true action value is:
-
-$$
-q_*(3) = 2.5
-$$
 
 In practice, the true action value is unknown to the agent. The agent estimates it using the rewards received while learning.
 
