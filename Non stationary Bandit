@@ -1,0 +1,357 @@
+# Nonstationary 10-Armed Bandit in Reinforcement Learning
+
+## 1. Introduction
+
+The 10-Armed Bandit is a Reinforcement Learning problem in which an agent chooses one of 10 actions (arms) to receive a reward.
+
+In this project, the true reward values of the arms change over time. This makes the problem **nonstationary**.
+
+The Python implementation compares two action-value estimation methods:
+
+1. **Sample-Average Method**
+2. **Constant Step-Size Method**
+
+Both methods use the epsilon-greedy strategy to balance exploration and exploitation.
+
+### Objective
+
+- Learn which arm provides the best reward.
+- Adapt to changes in reward values.
+- Maximize the average reward.
+- Measure how often the agent selects the currently optimal action.
+
+## 2. Parameters Used
+
+| Parameter | Value | Purpose |
+|---|---:|---|
+| `NUM_RUNS` | 2000 | Number of independent simulations |
+| `NUM_STEPS` | 10000 | Number of action selections per simulation |
+| `NUM_ARMS` | 10 | Number of available actions |
+| `EPSILON` | 0.1 | Exploration probability |
+| `ALPHA` | 0.1 | Constant step size |
+| `rng` | Seed 42 | Makes the random sequence reproducible |
+
+## 3. Epsilon-Greedy Action Selection
+
+The epsilon-greedy strategy selects an action using either exploration or exploitation.
+
+### Exploration formula
+
+$$
+P(\text{Exploration})=\varepsilon
+$$
+
+### Exploitation formula
+
+$$
+P(\text{Exploitation})=1-\varepsilon
+$$
+
+In this code:
+
+$$
+\varepsilon=0.1
+$$
+
+Therefore,
+
+$$
+P(\text{Exploration})=0.1=10\%
+$$
+
+$$
+P(\text{Exploitation})=1-0.1=0.9=90\%
+$$
+
+**How it is used in the code:**
+
+```python
+if rng.random() < EPSILON:
+    action = rng.integers(NUM_ARMS)
+else:
+    greedy_actions = np.flatnonzero(
+        q_est == np.max(q_est)
+    )
+    action = rng.choice(greedy_actions)
+```
+
+- With probability 10%, the agent randomly explores an arm.
+- With probability 90%, it chooses an arm with the highest estimated reward.
+- If multiple arms have the same highest estimate, the code randomly selects among them.
+
+## 4. Reward Generation Formula
+
+The reward received by the agent is calculated as:
+
+$$
+R_t=Q_t^*(A_t)+\eta_t
+$$
+
+Where:
+
+- \(R_t\) = Reward received at time step \(t\).
+- \(Q_t^*(A_t)\) = True action value of the selected arm at time \(t\).
+- \(A_t\) = Selected action.
+- \(\eta_t\) = Random noise sampled from a standard normal distribution.
+
+**How it is used in the code:**
+
+```python
+reward = q_true[action] + rng.standard_normal()
+```
+
+### Example
+
+Suppose the selected arm has a true action value of 3 and the random noise generated is 0.5.
+
+$$
+R_t=3+0.5
+$$
+
+$$
+\boxed{R_t=3.5}
+$$
+
+The agent receives a reward of 3.5. The reward can vary even when the same arm is selected because of the random noise.
+
+## 5. Sample-Average Method
+
+The sample-average method estimates an arm's value using the average of all rewards received from that arm.
+
+### Formula
+
+$$
+Q_{n+1}(a)=Q_n(a)+\frac{1}{n+1}\left[R-Q_n(a)\right]
+$$
+
+Where:
+
+- \(Q_n(a)\) = Previous estimated value of arm \(a\), after \(n\) selections.
+- \(Q_{n+1}(a)\) = Updated estimated value after the next selection.
+- \(R\) = Newly received reward.
+- \(n+1\) = Total number of selections of that arm, including the current selection.
+
+### How it is used in the code
+
+```python
+counts[action] += 1
+
+if method == "sample_average":
+    q_est[action] += (
+        reward - q_est[action]
+    ) / counts[action]
+```
+
+The code first increases the selected arm's count. It then updates the estimate using the new reward and the updated count.
+
+### Example
+
+Suppose the previous estimated reward is 2, the new reward is 4, and the arm has now been selected 3 times.
+
+$$
+Q_n(a)=2,\qquad R=4,\qquad n+1=3
+$$
+
+Substitute these values into the formula:
+
+$$
+Q_{\text{new}}(a)=2+\frac{1}{3}(4-2)
+$$
+
+$$
+Q_{\text{new}}(a)=2+\frac{2}{3}
+$$
+
+$$
+\boxed{Q_{\text{new}}(a)\approx2.67}
+$$
+
+**Result:** The updated estimated reward is approximately 2.67.
+
+**Limitation:** In a nonstationary problem, old rewards continue to influence the average. As a result, the sample-average method may adapt slowly when an arm's true value changes.
+
+## 6. Constant Step-Size Method
+
+The constant step-size method uses a fixed learning rate, \(\alpha\), to update the estimated reward.
+
+### Formula
+
+$$
+Q_{\text{new}}(a)=Q_{\text{old}}(a)+\alpha\left[R-Q_{\text{old}}(a)\right]
+$$
+
+Where:
+
+- \(Q_{\text{new}}(a)\) = Updated estimated reward.
+- \(Q_{\text{old}}(a)\) = Previous estimated reward.
+- \(R\) = Newly received reward.
+- \(\alpha\) = Constant step size or learning rate.
+
+In this project:
+
+$$
+\alpha=0.1
+$$
+
+### How it is used in the code
+
+```python
+elif method == "constant_step":
+    q_est[action] += ALPHA * (
+        reward - q_est[action]
+    )
+```
+
+The estimate is updated using the fixed step size of 0.1, regardless of how many times the arm has been selected.
+
+### Example
+
+Suppose the previous estimated reward is 2, the new reward is 4, and the learning rate is 0.1.
+
+$$
+Q_{\text{old}}(a)=2,\qquad R=4,\qquad \alpha=0.1
+$$
+
+Substitute these values into the formula:
+
+$$
+Q_{\text{new}}(a)=2+0.1(4-2)
+$$
+
+$$
+Q_{\text{new}}(a)=2+0.1(2)
+$$
+
+$$
+\boxed{Q_{\text{new}}(a)=2.2}
+$$
+
+**Result:** The updated estimated reward is 2.2.
+
+The constant step-size method gives more weight to recent rewards, helping the agent adapt to changes in the true action values.
+
+## 7. Comparison of Both Methods
+
+Using the same example, the previous estimate is 2 and the new reward is 4.
+
+| Feature | Sample Average | Constant Step Size |
+|---|---|---|
+| Update rule | Uses the number of selections | Uses fixed \(\alpha\) |
+| Learning rate | Decreases as selections increase | Remains constant |
+| Effect of recent rewards | Influence decreases over time | Influence remains more consistent |
+| Nonstationary environment | Can adapt slowly | Can adapt more quickly |
+| Formula parameter | Selection count | \(\alpha=0.1\) |
+
+For the example above:
+
+$$
+Q_{\text{sample}}=2+\frac{4-2}{3}\approx2.67
+$$
+
+$$
+Q_{\text{constant}}=2+0.1(4-2)=2.2
+$$
+
+The two methods produce different estimates because they use different update rules.
+
+## 8. Changing True Action Values
+
+In a nonstationary environment, the true action values change over time.
+
+### Formula
+
+$$
+Q_{t+1}^*(a)=Q_t^*(a)+\Delta_t
+$$
+
+Here, \(\Delta_t\) is a random change in the true value.
+
+In this implementation, the random change is sampled from a normal distribution with mean 0 and standard deviation 0.01.
+
+**Code:**
+
+```python
+q_true += rng.normal(
+    0.0, 0.01, size=NUM_ARMS
+)
+```
+
+This operation changes the true values of all 10 arms after each step. The agent must continually update its estimates to respond to these changes.
+
+## 9. Performance Evaluation
+
+The code evaluates both methods using average reward and the percentage of optimal actions.
+
+### Average Reward
+
+The average reward at each time step is calculated across all 2000 runs.
+
+$$
+\bar{R}_t=\frac{1}{M}\sum_{i=1}^{M}R_{i,t}
+$$
+
+Where:
+
+- \(M\) = Number of simulation runs, which is 2000.
+- \(R_{i,t}\) = Reward obtained in run \(i\) at time step \(t\).
+- \(\bar{R}_t\) = Average reward at time step \(t\).
+
+**Code:**
+
+```python
+avg_reward = rewards.mean(axis=0)
+```
+
+A higher average reward generally indicates better reward collection.
+
+### Percentage of Optimal Actions
+
+The percentage of optimal actions measures how often the agent selects an action that is optimal at that time step.
+
+$$
+\text{Optimal Action Percentage}_t
+=
+\frac{\text{Number of optimal selections at step }t}{M}
+\times100
+$$
+
+**Code:**
+
+```python
+optimal_percentage = (
+    optimal_actions.mean(axis=0) * 100
+)
+```
+
+A higher percentage means the agent more frequently selects the currently optimal action.
+
+Because the true action values change, the optimal action can also change over time.
+
+## 10. Graphs
+
+The Python program generates two graphs.
+
+### Graph 1: Average Reward
+
+This graph compares the average rewards obtained by the sample-average and constant step-size methods across 10,000 steps.
+
+**Interpretation:** The method that maintains a higher average reward over time performs better in terms of reward collection.
+
+### Graph 2: Percentage of Optimal Actions
+
+This graph compares how often each method chooses the currently optimal action.
+
+**Interpretation:** A higher percentage indicates that the agent is more frequently selecting the best available action at that time.
+
+The actual graph results depend on the simulation. The expected advantage of a constant step size in a nonstationary environment should be verified from the plotted results rather than assumed.
+
+## 11. Conclusion
+
+This project compares two action-value estimation techniques in a nonstationary 10-armed bandit problem.
+
+- The **sample-average method** updates estimates using the number of times an arm has been selected.
+- The **constant step-size method** uses a fixed learning rate to give recent rewards continuing influence.
+- The **epsilon-greedy strategy** balances exploration and exploitation.
+- The average reward and optimal-action percentage graphs help compare the performance of both methods.
+
+**Key takeaway:** When reward values change over time, the agent needs to adapt its estimates to keep selecting good actions.
