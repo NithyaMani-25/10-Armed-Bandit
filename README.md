@@ -306,7 +306,7 @@ $$
 - The learning rate remains constant.
 - Recent rewards have more continuing influence on the estimate.
 - It can adapt more quickly to changes in a nonstationary environment.
-- # Comparison of Sample-Average and Constant Step-Size Methods
+
 
 ## Example: Constant Step-Size Gives a Higher Estimated Reward
 
@@ -387,52 +387,7 @@ In a nonstationary environment, the true reward values of the arms change over t
 
 **Note:** A higher estimate after one update does not guarantee better overall performance. The result depends on the learning rate, reward changes, and action-selection strategy.
 
-### 3. Comparison Table
 
-| Feature | Sample-Average Method | Constant Step-Size Method |
-|---|---|---|
-| Update rule | Step size decreases over time | Fixed step size, alpha |
-| Past rewards | All past rewards influence the estimate | Older rewards gradually lose influence |
-| Adaptation to changes | Usually slower | Usually faster |
-| Suitable environment | Stationary environments | Nonstationary environments |
-| Learning rate | \(1/n\), based on selection count | Fixed, for example, \(\alpha=0.1\) |
-| Response to recent rewards | Influence becomes smaller over time | Continues to give recent rewards weight |
-| Main advantage | Estimates the long-term average reward | Tracks changing reward values |
-| Main limitation | May retain outdated information | Performance depends on the choice of alpha |
-
-### 4. Numerical Example
-
-Suppose the current estimated reward is 2 and the latest reward is 4.
-
-**Sample-average method:** Assume this is the third selection of the arm.
-
-$$
-Q_{\text{new}}=2+\frac{1}{3}(4-2)
-$$
-
-$$
-Q_{\text{new}}\approx2.67
-$$
-
-**Constant step-size method:** Let the learning rate be \(\alpha=0.1\).
-
-$$
-Q_{\text{new}}=2+0.1(4-2)
-$$
-
-$$
-Q_{\text{new}}=2.2
-$$
-
-Both estimates move toward the new reward of 4, but they use different update sizes.
-
-### 5. Conclusion
-
-For a nonstationary 10-armed bandit, the constant step-size method is often more effective because it continues to respond to recent rewards as the true action values change. The sample-average method may adapt slowly because older rewards continue to affect its estimates.
-
-The actual performance depends on the environment, the exploration rate, and the selected learning rate.
-
-**Key takeaway:** The actual reward is received from the environment, while the estimated reward is calculated from the agent's past experience.
 
 
 
