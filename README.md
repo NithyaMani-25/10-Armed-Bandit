@@ -1,19 +1,11 @@
  10-Armed-Bandit
  # 10-Armed Bandit Problem Using Python
 
-## 1. Introduction
+## 1. Objectives
+<img width="1376" height="768" alt="image" src="https://github.com/user-attachments/assets/173c0186-1414-43e7-9f2e-5a276a88cfc0" />
 
-The problem consists of 10 different actions, called arms. Each arm provides a reward based on an underlying reward distribution. The agent must learn which arm gives the highest expected reward.
 
-The main challenge is balancing **exploration** (trying different arms) and **exploitation** (choosing the arm that appears to provide the highest reward).
-
-## 2. Objectives
-
-- To understand the 10-Armed Bandit problem in Reinforcement Learning.
-- To implement the problem using Python.
-- To study exploration and exploitation.
-- To calculate and analyze rewards obtained from different arms.
-- To visualize the learning performance using graphs.
+- To Implement the 10-Armed Bandit problem 
 
 ## 3. Problem Description
 
