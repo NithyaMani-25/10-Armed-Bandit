@@ -111,53 +111,7 @@ Q(3) = (2 + 1 + 5) / 3
 
 
 
-## 6. Estimated Reward Formula
 
-The estimated reward represents the average reward obtained from selecting an arm.
-
-$$
-Q(a)=\frac{\text{Total reward from arm }a}{\text{Number of times arm }a\text{ was selected}}
-$$
-
-Where:
-
-- \(Q(a)\) = Estimated reward of arm \(a\).
-- Total reward = Sum of rewards received from that arm.
-- Number of times selected = Total selections of that arm.
-
-### Example: Arm 3
-
-Suppose Arm 3 is selected three times and provides the following rewards:
-
-| Attempt | Arm Selected | Reward |
-|---|---|---:|
-| 1 | Arm 3 | 2 |
-| 2 | Arm 3 | 1 |
-| 3 | Arm 3 | 5 |
-
-**Step 1: Calculate the total reward.**
-
-$$
-\text{Total reward}=2+1+5=8
-$$
-
-**Step 2: Count the selections.**
-
-$$
-\text{Number of selections}=3
-$$
-
-**Step 3: Calculate the estimated reward.**
-
-$$
-Q(3)=\frac{2+1+5}{3}
-$$
-
-$$
-Q(3)=\frac{8}{3}\approx2.67
-$$
-
-**Result:** The estimated average reward for Arm 3 is approximately 2.67.
 
 ## 7. Estimated Reward Update Formula
 
