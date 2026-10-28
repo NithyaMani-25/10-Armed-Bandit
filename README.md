@@ -306,6 +306,86 @@ $$
 - The learning rate remains constant.
 - Recent rewards have more continuing influence on the estimate.
 - It can adapt more quickly to changes in a nonstationary environment.
+- # Comparison of Sample-Average and Constant Step-Size Methods
+
+## Example: Constant Step-Size Gives a Higher Estimated Reward
+
+Assume the previous estimated reward is 2 and the latest reward received is 8.
+
+### 1. Sample-Average Method
+
+Assume the arm has been selected 10 times, including the latest selection.
+
+**Formula:**
+
+$$
+Q_{\text{new}}=Q_{\text{old}}+\frac{1}{n}(R-Q_{\text{old}})
+$$
+
+**Substitute the values:**
+
+$$
+Q_{\text{new}}=2+\frac{1}{10}(8-2)
+$$
+
+$$
+Q_{\text{new}}=2+0.1(6)
+$$
+
+$$
+\boxed{Q_{\text{new}}=2.6}
+$$
+
+The new estimated reward using the sample-average method is **2.6**.
+
+### 2. Constant Step-Size Method
+
+Let the constant learning rate be \(\alpha=0.5\).
+
+**Formula:**
+
+$$
+Q_{\text{new}}=Q_{\text{old}}+\alpha(R-Q_{\text{old}})
+$$
+
+**Substitute the values:**
+
+$$
+Q_{\text{new}}=2+0.5(8-2)
+$$
+
+$$
+Q_{\text{new}}=2+0.5(6)
+$$
+
+$$
+\boxed{Q_{\text{new}}=5.0}
+$$
+
+The new estimated reward using the constant step-size method is **5.0**.
+
+### 3. Comparison of Results
+
+| Parameter | Sample-Average Method | Constant Step-Size Method |
+|---|---:|---:|
+| Previous estimated reward | 2 | 2 |
+| Latest reward | 8 | 8 |
+| Update step | 0.1 | 0.5 |
+| New estimated reward | 2.6 | 5.0 |
+
+### 4. Why Does Constant Step Size Give a Higher Estimate?
+
+The constant step-size method uses a learning rate of 0.5, while the sample-average method uses an update step of 0.1.
+
+Since the constant step-size method uses a larger update step, its estimated reward moves more quickly toward the latest reward of 8.
+
+### 5. Conclusion
+
+In this example, the constant step-size method produces a higher estimated reward of 5.0, compared with 2.6 for the sample-average method.
+
+In a nonstationary environment, the true reward values of the arms change over time. The constant step-size method can adapt more quickly because recent rewards continue to influence its estimates.
+
+**Note:** A higher estimate after one update does not guarantee better overall performance. The result depends on the learning rate, reward changes, and action-selection strategy.
 
 ### 3. Comparison Table
 
