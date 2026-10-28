@@ -191,12 +191,7 @@ A_t =
 \end{cases}
 $$
 
-**Where:**
 
-- \(A_t\): Action selected at time step \(t\).
-- \(Q_t(a)\): Estimated reward of action \(a\) at time step \(t\).
-- \(\varepsilon\): The probability of exploration.
-- \(1-\varepsilon\): The probability of exploitation.
 
 ## 7. Important Formulas Summary
 | **Formula** | **Purpose** |
