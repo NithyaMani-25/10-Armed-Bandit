@@ -175,43 +175,28 @@ $$
 
 **Limitation:** A greedy strategy may repeatedly select the same arm and miss other arms that could provide higher rewards.
 
-Read more: [Towards Data Science - Bandit Algorithms Guide](https://towardsdatascience.com/bandit-algorithms-34fd7890cb18/)
+
 
 ### Epsilon-Greedy Action Selection
 
-The epsilon-greedy strategy balances **exploration** and **exploitation**. It selects a random arm with probability \(\varepsilon\) and the greedy action with probability \(1-\varepsilon\).
+The epsilon-greedy strategy selects the greedy action with probability \(1-\varepsilon\) and a random arm with probability \(\varepsilon\).
 
 **Formula:**
 
 $$
 A_t =
 \begin{cases}
-\arg\max_a Q_t(a), & \text{with probability } 1-\varepsilon \\[6pt]
+\arg\max\limits_a Q_t(a), & \text{with probability } 1-\varepsilon \\[8pt]
 \text{random arm}, & \text{with probability } \varepsilon
 \end{cases}
 $$
 
 **Where:**
 
+- \(A_t\): Action selected at time step \(t\).
+- \(Q_t(a)\): Estimated reward of action \(a\) at time step \(t\).
 - \(\varepsilon\): The probability of exploration.
 - \(1-\varepsilon\): The probability of exploitation.
-- **Exploration:** Selecting a random arm to discover its reward.
-- **Exploitation:** Selecting an arm with the highest estimated reward.
-
-### Example: Epsilon = 0.1
-
-When \(\varepsilon = 0.1\):
-
-$$
-P(\text{Exploration}) = \varepsilon = 0.1 = 10\%
-$$
-
-$$
-P(\text{Exploitation}) = 1-\varepsilon = 0.9 = 90\%
-$$
-
-Therefore, the agent explores 10% of the time and exploits 90% of the time, on average.
-
 
 ## 7. Important Formulas Summary
 | **Formula** | **Purpose** |
