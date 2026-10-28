@@ -155,10 +155,10 @@ The estimate increases because the new reward is greater than the previous estim
 ## 6. Important Formulas Summary
 | **Formula** | **Purpose** |
 |---|---|
-| \(Q(a)=\frac{\text{Total reward}}{\text{Number of selections}}\) | Calculates the average estimated reward |
-| $Q_{\text{new}}(a)=Q_{\text{old}}(a)+\frac{1}{N(a)}\left[R-Q_{\text{old}}(a)\right]$ | Updates the estimated reward |
-| $P(\text{Exploration})=\varepsilon$ | Probability of exploration |
-| $P(\text{Exploitation})=1-\varepsilon$ | Probability of exploitation |
+| <code>Q(a) = Total reward / Number of selections</code> | Calculates the average estimated reward |
+| <code>Q<sub>new</sub>(a) = Q<sub>old</sub>(a) + (1/N(a)) [R - Q<sub>old</sub>(a)]</code> | Updates the estimated reward |
+| <code>P(Exploration) = ε</code> | Probability of exploration |
+| <code>P(Exploitation) = 1 - ε</code> | Probability of exploitation |
 
 ## 7. Conclusion
 
