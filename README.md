@@ -48,6 +48,8 @@ Therefore, the agent explores 10% of the time and exploits 90% of the time, on a
 
 ## 3. Action-Value Function (Expected Reward)
 
+1. Action-Value Function (Expected Reward)
+
 The true value of an action (choosing arm a) is the expected reward given that action a is selected:
 \(q_{*}(a)=\mathbb{E}[R_{t}\mid A_{t}=a]\)
 • \(A_{t}\): The action selected at time step t.
