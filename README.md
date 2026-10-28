@@ -1,17 +1,16 @@
  10-Armed-Bandit
  # 10-Armed Bandit Problem 
 
-## 1. Objectives
-To maximize the reward
+
 
 <img width="1376" height="768" alt="image" src="https://github.com/user-attachments/assets/173c0186-1414-43e7-9f2e-5a276a88cfc0" />
 
 
 
 
-## 3. Problem Description
 
-# 10-Armed Bandit Problem in Reinforcement Learning
+
+
 
 ## 1. Introduction
 
@@ -160,24 +159,6 @@ The estimate increases because the new reward is greater than the previous estim
 
 The 10-Armed Bandit problem demonstrates how Reinforcement Learning agents learn from rewards. Using the epsilon-greedy strategy, the agent balances exploration and exploitation to identify better actions and maximize its total reward over time.
 
-**Key takeaway:** The actual reward is received from the environment, while the estimated reward is calculated from the agent's past experience.In this experiment, the agent has 10 possible actions:
-
-- Action 1
-- Action 2
-- Action 3
-- Action 4
-- Action 5
-- Action 6
-- Action 7
-- Action 8
-- Action 9
-- Action 10
-
-Each action has an unknown true expected reward. Whenever the agent selects an action, it receives a reward generated from that action's reward distribution.
-
-The agent learns through repeated trials and attempts to maximize the total reward.
-
-## 4. Methodology
 
 
 ## 5. Algorithm
@@ -194,31 +175,7 @@ Where:
 
 This update allows the agent to improve its estimate of each arm's expected reward.
 
-## 6. Exploration and Exploitation
 
-The experiment can use the epsilon-greedy strategy.
-
-- **Exploration:** Select a random action to discover its reward.
-- **Exploitation:** Select the action with the highest estimated reward.
-
-The parameter epsilon (ε) controls the probability of exploration.
-
-For example, when ε = 0.1, the agent explores with a probability of 10% and exploits with a probability of 90%, subject to the action-selection implementation.
-
-# 10-Armed Bandit Problem in Reinforcement Learning
-
-## 1. Introduction
-
-The 10-Armed Bandit is a Reinforcement Learning problem in which an agent chooses from 10 different actions (arms). Each arm provides a reward, but the reward values are initially unknown.
-
-**Objective:** Learn which arm provides the highest reward while maximizing the total reward.
-
-## 2. Exploration and Exploitation
-
-The epsilon-greedy algorithm balances two strategies:
-
-- **Exploration:** Selecting an arm to discover its reward.
-- **Exploitation:** Selecting the arm with the highest estimated reward.
 
 ### Exploration Formula
 
