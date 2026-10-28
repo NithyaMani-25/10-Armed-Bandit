@@ -186,7 +186,7 @@ The epsilon-greedy strategy selects the greedy action with probability \(1-\vare
 $$
 A_t =
 \begin{cases}
-\arg\max\limits_a Q_t(a), & \text{with probability } 1-\varepsilon \\[8pt]
+\arg\max\limits_a Q_t(a), & \text{with probability } 1-\varepsilon \\
 \text{random arm}, & \text{with probability } \varepsilon
 \end{cases}
 $$
