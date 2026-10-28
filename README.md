@@ -104,7 +104,7 @@ $$
 
 Where:
 
-- Q_{\text{new}}(a) = Updated estimated reward.
+- Q_{\text{new}}(a) = Updated estimated reward
 - Q_{\text{old}}(a) = Previous estimated reward.
 - \(N(a)\) = Number of times the arm has been selected, including the current selection.
 - \(R\) = Reward received from the current selection.
