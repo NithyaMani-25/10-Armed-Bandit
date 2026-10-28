@@ -3,8 +3,6 @@
 
 ## 1. Introduction
 
-The **10-Armed Bandit Problem** is a fundamental problem in Reinforcement Learning (RL). It is used to understand how an agent learns to select the best action through repeated interaction with an environment.
-
 The problem consists of 10 different actions, called arms. Each arm provides a reward based on an underlying reward distribution. The agent must learn which arm gives the highest expected reward.
 
 The main challenge is balancing **exploration** (trying different arms) and **exploitation** (choosing the arm that appears to provide the highest reward).
