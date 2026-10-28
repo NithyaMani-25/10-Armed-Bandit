@@ -106,45 +106,10 @@ Q(3) = (2 + 1 + 5) / 3
 | `P(Exploitation) = 1 - ε` | Probability of exploitation |
 
 
-## 5. Algorithm
-
-The action-value estimate can be updated using the sample-average method:
-
-Q(a+1) = Q(a) +1/N(a) [R - Q(a)] 
-
-Where:
-
-- Q(a) is the estimated value of action a.
-- R is the reward received.
-- N(a) is the number of times action a has been selected.
-
-This update allows the agent to improve its estimate of each arm's expected reward.
 
 
 
-### Exploration Formula
 
-$$
-P(\text{Exploration})=\varepsilon
-$$
-
-### Exploitation Formula
-
-$$
-P(\text{Exploitation})=1-\varepsilon
-$$
-
-**Example:** If \(\varepsilon=0.1\),
-
-$$
-P(\text{Exploration})=0.1=10\%
-$$
-
-$$
-P(\text{Exploitation})=1-0.1=0.9=90\%
-$$
-
-Therefore, the agent explores 10% of the time and exploits 90% of the time, on average.
 
 ## 6. Estimated Reward Formula
 
