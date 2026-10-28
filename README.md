@@ -46,7 +46,16 @@ For example, if `ε = 0.1`:
 
 Therefore, the agent explores 10% of the time and exploits 90% of the time, on average.
 
-## 3. Estimated Reward Formula
+## 3. Action-Value Function (Expected Reward)
+
+The true value of an action (choosing arm a) is the expected reward given that action a is selected:
+\(q_{*}(a)=\mathbb{E}[R_{t}\mid A_{t}=a]\)
+• \(A_{t}\): The action selected at time step t.
+• \(R_{t}\): The reward received at time step t.
+• \(q_*(a)\): The true, unknown value of action a.
+
+
+## 4. Estimated Reward Formula
 
 The estimated reward represents the average reward obtained from selecting an arm.
 
@@ -94,7 +103,7 @@ Q(3) = (2 + 1 + 5) / 3
 
 **Result:** The estimated average reward for Arm 3 is `2.67`.
 
-## 4. Estimated Reward Update Formula
+## 5. Estimated Reward Update Formula
 
 The agent updates its estimated reward whenever it selects an arm and receives a new reward.
 
@@ -143,7 +152,7 @@ $$
 
 The estimate increases because the new reward is greater than the previous estimate.
 
-## 5. Algorithm Steps
+## 6. Algorithm Steps
 
 1. Initialize the estimated rewards of all 10 arms.
 2. Choose an arm using the epsilon-greedy strategy.
@@ -152,7 +161,7 @@ The estimate increases because the new reward is greater than the previous estim
 5. Repeat the process for multiple attempts.
 6. Compare the rewards and observe how the agent learns over time.
 
-## 6. Important Formulas Summary
+## 7. Important Formulas Summary
 | **Formula** | **Purpose** |
 |---|---|
 | <code>Q(a) = Total reward / Number of selections</code> | Calculates the average estimated reward |
@@ -160,7 +169,7 @@ The estimate increases because the new reward is greater than the previous estim
 | <code>P(Exploration) = ε</code> | Probability of exploration |
 | <code>P(Exploitation) = 1 - ε</code> | Probability of exploitation |
 
-## 7. Conclusion
+## 8. Conclusion
 
 The 10-Armed Bandit problem demonstrates how Reinforcement Learning agents learn from rewards. Using the epsilon-greedy strategy, the agent balances exploration and exploitation to identify better actions and maximize its total reward over time.
 
