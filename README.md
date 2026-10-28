@@ -257,21 +257,9 @@ In a nonstationary environment, the true reward values of the arms change over t
 The sample-average method retains the influence of older rewards. The constant step-size method gives more continuing influence to recent rewards and can adapt more quickly to changes.
 
 
-## 7. Performance Evaluation
 
-The program evaluates the methods using two measures.
 
-### Average Reward
 
-$$\bar{R}_t=\frac{1}{M}\sum_{i=1}^{M}R_{i,t}$$
-
-Here, M represents the number of runs. Higher average reward generally indicates better performance.
-
-### Percentage of Optimal Actions
-
-$$\text{Optimal Action Percentage}=\frac{\text{Number of optimal selections}}{\text{Number of runs}}\times100$$
-
-This measures how frequently the agent selects an arm with the highest current true reward value.
 
 ## Comparison of Sample-Average and Constant Step-Size Methods
 
