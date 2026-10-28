@@ -155,14 +155,63 @@ $$
 
 The estimate increases because the new reward is greater than the previous estimate.
 
-## 6. Algorithm Steps
+## 6. Selecting the Optimal Action (Greedy vs. Epsilon-Greedy)
 
-1. Initialize the estimated rewards of all 10 arms.
-2. Choose an arm using the epsilon-greedy strategy.
-3. Receive a reward from the selected arm.
-4. Update the estimated reward of that arm.
-5. Repeat the process for multiple attempts.
-6. Compare the rewards and observe how the agent learns over time.
+### Greedy Action Selection
+
+At each time step \(t\), the agent selects the action with the highest estimated reward using the `argmax` operator.
+
+**Formula:**
+
+$$
+A_t = \arg\max_a Q_t(a)
+$$
+
+**Where:**
+
+- \(A_t\): The action selected at time step \(t\).
+- \(Q_t(a)\): The estimated reward of action \(a\) at time step \(t\).
+- \(\arg\max_a\): Selects the action with the highest estimated reward.
+
+**Limitation:** A greedy strategy may repeatedly select the same arm and miss other arms that could provide higher rewards.
+
+Read more: [Towards Data Science - Bandit Algorithms Guide](https://towardsdatascience.com/bandit-algorithms-34fd7890cb18/)
+
+### Epsilon-Greedy Action Selection
+
+The epsilon-greedy strategy balances **exploration** and **exploitation**. It selects a random arm with probability \(\varepsilon\) and the greedy action with probability \(1-\varepsilon\).
+
+**Formula:**
+
+$$
+A_t =
+\begin{cases}
+\arg\max_a Q_t(a), & \text{with probability } 1-\varepsilon \\[6pt]
+\text{random arm}, & \text{with probability } \varepsilon
+\end{cases}
+$$
+
+**Where:**
+
+- \(\varepsilon\): The probability of exploration.
+- \(1-\varepsilon\): The probability of exploitation.
+- **Exploration:** Selecting a random arm to discover its reward.
+- **Exploitation:** Selecting an arm with the highest estimated reward.
+
+### Example: Epsilon = 0.1
+
+When \(\varepsilon = 0.1\):
+
+$$
+P(\text{Exploration}) = \varepsilon = 0.1 = 10\%
+$$
+
+$$
+P(\text{Exploitation}) = 1-\varepsilon = 0.9 = 90\%
+$$
+
+Therefore, the agent explores 10% of the time and exploits 90% of the time, on average.
+
 
 ## 7. Important Formulas Summary
 | **Formula** | **Purpose** |
