@@ -1,11 +1,13 @@
  10-Armed-Bandit
- # 10-Armed Bandit Problem Using Python
+ # 10-Armed Bandit Problem 
 
 ## 1. Objectives
+To maximize the reward
+
 <img width="1376" height="768" alt="image" src="https://github.com/user-attachments/assets/173c0186-1414-43e7-9f2e-5a276a88cfc0" />
 
 
-- To Implement the 10-Armed Bandit problem 
+
 
 ## 3. Problem Description
 
@@ -28,15 +30,6 @@ The agent learns through repeated trials and attempts to maximize the total rewa
 
 ## 4. Methodology
 
-The experiment follows these steps:
-
-1. Initialize the 10 arms with their reward distributions.
-2. Select an action using an action-selection strategy.
-3. Receive a reward from the selected arm.
-4. Update the estimated value of that action.
-5. Repeat the process for multiple time steps.
-6. Calculate the rewards and evaluate the agent's performance.
-7. Plot graphs to visualize the results.
 
 ## 5. Algorithm
 
