@@ -273,19 +273,84 @@ $$\text{Optimal Action Percentage}=\frac{\text{Number of optimal selections}}{\t
 
 This measures how frequently the agent selects an arm with the highest current true reward value.
 
-## 8. Graphs
+## Comparison of Sample-Average and Constant Step-Size Methods
 
-The Python program generates two graphs:
+In a 10-armed bandit problem, the agent estimates the expected reward of each arm and selects actions using a strategy such as epsilon-greedy.
 
-1. **Average Reward Graph:** Compares the average rewards of the sample-average and constant step-size methods.
-2. **Optimal Action Percentage Graph:** Compares how frequently each method selects the currently optimal arm.
+In a **nonstationary environment**, the true reward values change over time. The two methods differ in how they update their estimated rewards.
 
+### 1. Sample-Average Method
 
-## 9. Conclusion
+The sample-average method calculates the average of all rewards received from an arm.
 
-This project demonstrates how reinforcement learning can solve a decision-making problem in a changing environment. It compares the sample-average and constant step-size methods using epsilon-greedy action selection.
+**Formula:**
 
-The sample-average method uses accumulated rewards, while the constant step-size method responds more continuously to recent rewards. The comparison helps demonstrate why a constant step size is often useful in nonstationary environments.
+$$
+Q_{n+1}(a)=Q_n(a)+\frac{1}{n+1}[R-Q_n(a)]
+$$
+
+- The step size decreases as the number of selections increases.
+- All past rewards continue to influence the estimate.
+- It can adapt slowly when the true reward values change.
+
+### 2. Constant Step-Size Method
+
+The constant step-size method uses a fixed learning rate, alpha, to update the estimated reward.
+
+**Formula:**
+
+$$
+Q_{n+1}(a)=Q_n(a)+\alpha[R-Q_n(a)]
+$$
+
+- The learning rate remains constant.
+- Recent rewards have more continuing influence on the estimate.
+- It can adapt more quickly to changes in a nonstationary environment.
+
+### 3. Comparison Table
+
+| Feature | Sample-Average Method | Constant Step-Size Method |
+|---|---|---|
+| Update rule | Step size decreases over time | Fixed step size, alpha |
+| Past rewards | All past rewards influence the estimate | Older rewards gradually lose influence |
+| Adaptation to changes | Usually slower | Usually faster |
+| Suitable environment | Stationary environments | Nonstationary environments |
+| Learning rate | \(1/n\), based on selection count | Fixed, for example, \(\alpha=0.1\) |
+| Response to recent rewards | Influence becomes smaller over time | Continues to give recent rewards weight |
+| Main advantage | Estimates the long-term average reward | Tracks changing reward values |
+| Main limitation | May retain outdated information | Performance depends on the choice of alpha |
+
+### 4. Numerical Example
+
+Suppose the current estimated reward is 2 and the latest reward is 4.
+
+**Sample-average method:** Assume this is the third selection of the arm.
+
+$$
+Q_{\text{new}}=2+\frac{1}{3}(4-2)
+$$
+
+$$
+Q_{\text{new}}\approx2.67
+$$
+
+**Constant step-size method:** Let the learning rate be \(\alpha=0.1\).
+
+$$
+Q_{\text{new}}=2+0.1(4-2)
+$$
+
+$$
+Q_{\text{new}}=2.2
+$$
+
+Both estimates move toward the new reward of 4, but they use different update sizes.
+
+### 5. Conclusion
+
+For a nonstationary 10-armed bandit, the constant step-size method is often more effective because it continues to respond to recent rewards as the true action values change. The sample-average method may adapt slowly because older rewards continue to affect its estimates.
+
+The actual performance depends on the environment, the exploration rate, and the selected learning rate.
 
 **Key takeaway:** The actual reward is received from the environment, while the estimated reward is calculated from the agent's past experience.
 
