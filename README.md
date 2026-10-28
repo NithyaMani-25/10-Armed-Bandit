@@ -94,59 +94,9 @@ Q(3) = (2 + 1 + 5) / 3
 
 **Result:** The estimated average reward for Arm 3 is `2.67`.
 
-## 4. Estimated Reward Update Formula
 
-The agent updates its estimated reward whenever it selects an arm and receives a new reward.
 
-**Formula:**
-
-```text
-Q_new(a) = Q_old(a) + (1 / N(a)) * [R - Q_old(a)]
-```
-
-Where:
-
-- `Q_new(a)` = Updated estimated reward
-- `Q_old(a)` = Previous estimated reward
-- `N(a)` = Number of times the arm has been selected, including the current selection
-- `R` = Reward received from the current selection
-
-### Example
-
-Suppose:
-
-```text
-Previous estimate = 2.67
-New reward (R) = 4
-Number of selections (N) = 4
-```
-
-Substitute the values into the formula:
-
-```text
-Q_new(3) = 2.67 + (1 / 4) * (4 - 2.67)
-
-         = 2.67 + 0.25 * 1.33
-
-         = 2.67 + 0.3325
-
-         = 3.0025
-```
-
-**Result:** The updated estimated reward is approximately `3.00`.
-
-The estimate increases because the new reward is greater than the previous estimate.
-
-## 5. Algorithm Steps
-
-1. Initialize the estimated rewards of all 10 arms.
-2. Choose an arm using the epsilon-greedy strategy.
-3. Receive a reward from the selected arm.
-4. Update the estimated reward of that arm.
-5. Repeat the process for multiple attempts.
-6. Compare the rewards and observe how the agent learns over time.
-
-## 6. Important Formulas Summary
+## 4. Important Formulas Summary
 
 | Formula | Purpose |
 |---|---|
@@ -154,11 +104,6 @@ The estimate increases because the new reward is greater than the previous estim
 | `Q_new(a) = Q_old(a) + (1/N(a)) * [R - Q_old(a)]` | Updates the estimated reward |
 | `P(Exploration) = ε` | Probability of exploration |
 | `P(Exploitation) = 1 - ε` | Probability of exploitation |
-
-## 7. Conclusion
-
-The 10-Armed Bandit problem demonstrates how Reinforcement Learning agents learn from rewards. Using the epsilon-greedy strategy, the agent balances exploration and exploitation to identify better actions and maximize its total reward over time.
-
 
 
 ## 5. Algorithm
@@ -201,7 +146,7 @@ $$
 
 Therefore, the agent explores 10% of the time and exploits 90% of the time, on average.
 
-## 3. Estimated Reward Formula
+## 6. Estimated Reward Formula
 
 The estimated reward represents the average reward obtained from selecting an arm.
 
@@ -249,7 +194,7 @@ $$
 
 **Result:** The estimated average reward for Arm 3 is approximately 2.67.
 
-## 4. Estimated Reward Update Formula
+## 7. Estimated Reward Update Formula
 
 The agent updates its estimated reward whenever it selects an arm and receives a new reward.
 
@@ -298,7 +243,7 @@ $$
 
 The estimate increases because the new reward is greater than the previous estimate.
 
-## 5. Algorithm Steps
+## 8. Algorithm Steps
 
 1. Initialize the estimated rewards of all 10 arms.
 2. Choose an arm using the epsilon-greedy strategy.
@@ -307,7 +252,7 @@ The estimate increases because the new reward is greater than the previous estim
 5. Repeat the process for multiple attempts.
 6. Compare the rewards and observe how the agent learns over time.
 
-## 6. Important Formulas Summary
+## 9. Important Formulas Summary
 
 | Formula | Purpose |
 |---|---|
@@ -316,7 +261,7 @@ The estimate increases because the new reward is greater than the previous estim
 | \(P(\text{Exploration})=\varepsilon\) | Probability of exploration |
 | \(P(\text{Exploitation})=1-\varepsilon\) | Probability of exploitation |
 
-## 7. Conclusion
+## 10. Conclusion
 
 The 10-Armed Bandit problem demonstrates how Reinforcement Learning agents learn from rewards. Using the epsilon-greedy strategy, the agent balances exploration and exploitation to identify better actions and maximize its total reward over time.
 
