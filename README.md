@@ -221,7 +221,6 @@ The agent uses the epsilon-greedy strategy to select actions and learn from rewa
 
 | Parameter | Value | Description |
 |---|---:|---|
-
 | Steps  | 10000 | Selects an arm 10000 times |
 | Number of arms | 10 | Ten possible actions |
 | Epsilon (ε) | 0.1 | 10% exploration and 90% exploitation |
