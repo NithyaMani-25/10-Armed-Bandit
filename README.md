@@ -243,42 +243,9 @@ $$P(\text{Exploitation})=1-\varepsilon$$
 
 For ε = 0.1, the agent explores 10% of the time and exploits 90% of the time.
 
-## 4. Sample-Average Method
 
-The sample-average method estimates an arm's reward by averaging the rewards received from that arm.
 
-$$Q_{n+1}(a)=Q_n(a)+\frac{1}{n}[R-Q_n(a)]$$
-
-Where:
-- \(Q_n(a)\) is the previous estimated reward.
-- \(R\) is the latest reward.
-- \(n\) is the number of times the arm has been selected after the latest selection.
-
-**Example:**
-
-Previous estimate = 2, new reward = 4, and selection count = 3.
-
-$$Q_3=2+\frac{1}{3}(4-2)\approx2.67$$
-
-The updated estimate is approximately 2.67.
-
-## 5. Constant Step-Size Method
-
-The constant step-size method uses a fixed learning rate to update the estimated reward.
-
-$$Q_{\text{new}}(a)=Q_{\text{old}}(a)+\alpha[R-Q_{\text{old}}(a)]$$
-
-Where α is the learning rate.
-
-**Example:**
-
-Previous estimate = 2, new reward = 4, and α = 0.1.
-
-$$Q_{\text{new}}=2+0.1(4-2)=2.2$$
-
-The updated estimate is 2.2.
-
-## 6. Nonstationary Environment
+## 4. Nonstationary Environment
 
 In a nonstationary environment, the true reward values of the arms change over time. Therefore, an arm that was best earlier may not remain the best arm.
 
